@@ -318,9 +318,8 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .chatbot-container {
-    bottom: 16px;
-    right: 16px;
-    padding-bottom: env(safe-area-inset-bottom, 0px);
+    bottom: max(24px, env(safe-area-inset-bottom, 24px));
+    right: 20px;
   }
   
   .chatbot-trigger {
@@ -339,8 +338,8 @@
 
 @media (max-width: 430px) {
   .chatbot-container {
-    bottom: 12px;
-    right: 12px;
+    bottom: max(24px, env(safe-area-inset-bottom, 24px));
+    right: 16px;
   }
 
   .ai-chat-panel {

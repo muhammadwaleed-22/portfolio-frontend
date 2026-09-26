@@ -756,6 +756,7 @@ a {
   font-family: var(--font-code);
   font-size: 0.9rem;
   line-height: 1.7;
+  text-align: left;
 }
 
 [data-theme="light"] .code-editor-body pre {
@@ -2001,11 +2002,13 @@ a {
   justify-content: center;
   align-items: center;
   margin: auto;
-  max-width: max-content;
+  width: 100%;
+  max-width: 380px;
   border-radius: 16px;
   border: 1px solid var(--image-border);
   background: var(--image-surface);
   padding: 10px;
+  box-sizing: border-box;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   z-index: 1;
 }
@@ -2025,7 +2028,7 @@ a {
 
 .profile-output-image {
   width: 100%;
-  max-width: 380px;
+  max-width: 100%;
   height: auto;
   object-fit: cover;
   display: block;
