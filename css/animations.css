@@ -1,0 +1,145 @@
+/* animations.css - Base transitions & Reduced motion */
+
+/* Focus transitions */
+a, button, input, textarea {
+  transition: all 0.2s ease;
+}
+
+/* Global utility classes for simple reveals later */
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.fade-in.is-visible {
+  opacity: 1;
+}
+
+/* Scroll Reveal System */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95) rotateX(-5deg);
+  filter: blur(8px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              filter 0.8s ease-out;
+}
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1) rotateX(0deg);
+  filter: blur(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px) scale(0.95) rotateY(-5deg);
+  filter: blur(8px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              filter 0.8s ease-out;
+}
+.reveal-left.is-visible {
+  opacity: 1;
+  transform: translateX(0) scale(1) rotateY(0deg);
+  filter: blur(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px) scale(0.95) rotateY(5deg);
+  filter: blur(8px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              filter 0.8s ease-out;
+}
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: translateX(0) scale(1) rotateY(0deg);
+  filter: blur(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.85);
+  filter: blur(10px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              filter 0.8s ease-out;
+}
+.reveal-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+
+/* Stagger Delays (for 150-250ms increments or tight increments) */
+.delay-100 { transition-delay: 0.1s; }
+.delay-150 { transition-delay: 0.15s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
+.delay-600 { transition-delay: 0.6s; }
+.delay-700 { transition-delay: 0.7s; }
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal-up, .reveal-left, .reveal-right, .reveal-scale, .fade-in, .fade-up {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+
+@keyframes flyPlane {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    40% {
+        transform: translate(10px, -10px) scale(1.1) rotate(5deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(80px, -80px) scale(0.5) rotate(15deg);
+        opacity: 0;
+    }
+}
+
+@keyframes popCheck {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contact-form.sending-success .paper-plane {
+        animation: none;
+        opacity: 0;
+    }
+    .contact-form.sending-success .success-check {
+        animation: none;
+        opacity: 1;
+        transform: scale(1);
+        transition: opacity 0.3s;
+    }
+}

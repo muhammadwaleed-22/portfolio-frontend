@@ -1,0 +1,333 @@
+/* Project Detail Specific Styles */
+
+/* Common Layout */
+.project-content-section {
+  padding: var(--space-12) 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.project-content-section h2 {
+  margin-bottom: var(--space-6);
+}
+
+.project-content-section p {
+  margin-bottom: var(--space-4);
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* Hero Section */
+.project-hero {
+  padding-top: calc(var(--navbar-height) + var(--space-10));
+  padding-bottom: var(--space-10);
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+}
+
+.project-hero-single {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.project-hero-content .project-type {
+  font-family: var(--font-code);
+  font-size: 0.9rem;
+  color: var(--accent-secondary);
+  margin-bottom: var(--space-3);
+  display: block;
+}
+
+.project-hero-content h1 {
+  margin-bottom: var(--space-4);
+}
+
+.project-hero-content .project-description {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-6);
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+/* Overview Card */
+.project-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-6);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: var(--space-6);
+  margin-bottom: var(--space-10);
+}
+
+.overview-item h4 {
+  font-family: var(--font-code);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.overview-item p {
+  margin: 0;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Key Features Grid */
+.project-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+}
+
+.feature-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: var(--space-6);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(124, 92, 255, 0.3);
+}
+
+.feature-card svg {
+  color: var(--accent-secondary);
+  margin-bottom: var(--space-4);
+}
+
+.feature-card h3 {
+  margin-bottom: var(--space-2);
+  font-size: 1.1rem;
+}
+
+.feature-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* Architecture Section */
+.architecture-diagram {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: var(--space-8);
+  margin-top: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.arch-node {
+  background: rgba(124, 92, 255, 0.1);
+  border: 1px solid var(--accent-primary);
+  padding: var(--space-3) var(--space-6);
+  border-radius: 8px;
+  font-family: var(--font-code);
+  color: var(--text-primary);
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+}
+
+.arch-arrow {
+  color: var(--text-muted);
+}
+
+/* Challenges Section */
+.challenges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+}
+
+.challenge-card {
+  background: var(--surface);
+  border-left: 3px solid var(--accent-primary);
+  padding: var(--space-6);
+  border-radius: 0 12px 12px 0;
+}
+
+.challenge-card h3 {
+  margin-bottom: var(--space-3);
+  color: var(--text-primary);
+}
+
+.challenge-card p {
+  margin-bottom: var(--space-2);
+}
+.challenge-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* Placeholders */
+.project-placeholder-visual {
+  width: 100%;
+  aspect-ratio: 16/10;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+}
+
+.placeholder-header {
+  height: 30px;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-3);
+  gap: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.placeholder-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+}
+
+.placeholder-body {
+  flex-grow: 1;
+  background: linear-gradient(135deg, rgba(124, 92, 255, 0.1), rgba(41, 199, 255, 0.05));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-body span {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.placeholder-body small {
+  font-family: var(--font-code);
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: var(--space-2);
+}
+
+/* Project Navigation */
+.project-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-8) 0;
+  border-top: 1px solid var(--border);
+  margin-top: var(--space-12);
+}
+
+.project-nav-link {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+}
+.project-nav-link:hover {
+  color: var(--text-primary);
+}
+.project-nav-link.next {
+  text-align: right;
+}
+.project-nav-link small {
+  font-family: var(--font-code);
+  font-size: 0.8rem;
+  margin-bottom: var(--space-1);
+}
+.project-nav-link strong {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Responsive Project Pages */
+@media (max-width: 1024px) {
+  .project-hero-single {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .project-hero-content .project-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .project-hero-content .hero-actions, 
+  .project-hero-content .project-tech {
+    justify-content: center;
+  }
+}
+@media (max-width: 768px) {
+  .project-content-section {
+    padding: var(--space-8) var(--space-4);
+  }
+}
+@media (max-width: 430px) {
+  .project-navigation {
+    flex-direction: column;
+    gap: var(--space-6);
+    text-align: center;
+  }
+  .project-nav-link.next {
+    text-align: center;
+  }
+}
+
+/* Screenshot Section */
+.project-screenshot-section {
+  padding: 0 0 var(--space-12) 0;
+}
+
+.project-screenshot-card {
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  background: #1e1e1e;
+  display: flex;
+  flex-direction: column;
+}
+
+.linux-titlebar {
+  height: 36px;
+  background: #2a2a2a;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.linux-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.linux-dot.close { background: #ff5f56; }
+.linux-dot.minimize { background: #ffbd2e; }
+.linux-dot.maximize { background: #27c93f; }
+
+
+.project-screenshot-media {
+  width: 100%;
+  height: auto;
+  max-height: 50vh;
+  object-fit: contain;
+  display: block;
+}

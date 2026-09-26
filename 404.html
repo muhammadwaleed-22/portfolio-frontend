@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Page Not Found | Muhammad Waleed</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <style>
+        .error-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: var(--space-6);
+        }
+
+        .error-code {
+            font-size: clamp(4rem, 10vw, 8rem);
+            font-family: var(--font-code);
+            color: var(--accent-primary);
+            margin-bottom: var(--space-4);
+            line-height: 1;
+        }
+
+        .error-message {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: var(--space-6);
+        }
+    </style>
+</head>
+
+<body>
+    <main id="main-content" class="error-container">
+        <div>
+            <h1 class="error-code">404</h1>
+            <p class="error-message">The page you're looking for doesn't exist.</p>
+            <a href="/" class="btn btn-primary">Return to Homepage</a>
+        </div>
+    </main>
+</body>
+
+</html>

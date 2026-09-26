@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Waleed | Junior Software Engineer</title>
+    <meta name="description"
+        content="Portfolio of Muhammad Waleed, a Junior Software Engineer specializing in React, .NET, Python, and React Native full-stack development.">
+    <link rel="canonical" href="https://YOUR-FINAL-DOMAIN.com/">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Muhammad Waleed | Junior Software Engineer">
+    <meta property="og:description"
+        content="Portfolio of Muhammad Waleed, a Full Stack Engineer building fast, modern, and scalable digital experiences across web, mobile, and backend.">
+    <meta property="og:url" content="https://YOUR-FINAL-DOMAIN.com/">
+    <!-- og:image pending -->
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Muhammad Waleed | Junior Software Engineer">
+    <meta name="twitter:description"
+        content="Portfolio of Muhammad Waleed, a Full Stack Engineer building fast, modern, and scalable digital experiences across web, mobile, and backend.">
+    <!-- twitter:image pending -->
+    <script>
+        const savedTheme = localStorage.getItem('portfolio-theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+            document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark'); // Default to dark
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+</head>
+
+<body>
+    <!-- SVG Filter for true Lightning/Bijli Effect -->
+    <svg style="width: 0; height: 0; position: absolute;" aria-hidden="true">
+        <defs>
+            <filter id="bijli-effect" x="-20%" y="-20%" width="140%" height="140%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" result="noise">
+                    <animate attributeName="baseFrequency" values="0.05;0.08;0.05" dur="0.4s"
+                        repeatCount="indefinite" />
+                </feTurbulence>
+                <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -7" in="noise"
+                    result="sharpNoise" />
+                <feDisplacementMap in="SourceGraphic" in2="sharpNoise" scale="15" xChannelSelector="R"
+                    yChannelSelector="G" result="displaced" />
+                <feGaussianBlur in="displaced" stdDeviation="1.5" result="glow" />
+                <feMerge>
+                    <feMergeNode in="glow" />
+                    <feMergeNode in="displaced" />
+                </feMerge>
+            </filter>
+        </defs>
+    </svg>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header class="navbar" id="navbar">
+        <div class="container">
+            <a href="#home" class="navbar-brand">Muhammad <span class="brand-highlight">Waleed</span></a>
+
+            <button class="mobile-toggle" id="mobile-toggle" aria-expanded="false" aria-controls="navbar-nav"
+                aria-label="Toggle navigation">
+                <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="menu-icon">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+
+            <nav class="navbar-nav" id="navbar-nav">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link active">
+                            <span class="nav-link__label">Home</span>
+                        </a></li>
+                    <li><a href="#about" class="nav-link">
+                            <span class="nav-link__label">About</span>
+                        </a></li>
+                    <li><a href="#skills" class="nav-link">
+                            <span class="nav-link__label">Core Competencies</span>
+                        </a></li>
+                    <li><a href="#projects" class="nav-link">
+                            <span class="nav-link__label">Projects</span>
+                        </a></li>
+                    <li><a href="#experience" class="nav-link">
+                            <span class="nav-link__label">Experience</span>
+                        </a></li>
+                    <li><a href="#contact" class="nav-link">
+                            <span class="nav-link__label">Contact</span>
+                        </a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme" role="switch"
+                        aria-checked="false">
+                        <div class="toggle-bg"></div>
+                        <span class="icon-wrapper sun-wrapper">
+                            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                        </span>
+                        <span class="icon-wrapper moon-wrapper">
+                            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Temporary placeholders for Phase 1 -->
+        <section id="home" class="hero">
+            <div class="hero-bg-glow"></div>
+            <div class="floating-icons">
+                <div class="float-icon icon-code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg></div>
+                <div class="float-icon icon-db"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                    </svg></div>
+                <div class="float-icon icon-gear"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path
+                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                        </path>
+                    </svg></div>
+            </div>
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <span class="hero-greeting reveal-up"><span class="greeting-dot"></span>Hi, I'm</span>
+                    <h1 class="hero-heading reveal-up delay-100"><span class="hero-name-first">Muhammad</span><br><span
+                            class="hero-name-last">Waleed</span></h1>
+                    <h2 class="hero-role reveal-up delay-200">Junior Software Engineer</h2>
+                    <p class="hero-description body-text reveal-up delay-300">
+                        I build fast, modern, and scalable digital experiences,<br>
+                        spanning React, .NET, Python/Flask, React Native, and robust APIs.
+                    </p>
+
+                    <div class="hero-actions reveal-up delay-400">
+                        <a href="#projects" class="btn btn-primary">
+                            View Projects
+                            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="18"
+                                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="btn-icon-right">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+
+                    </div>
+
+                    <div class="hero-tech-tags reveal-up delay-500">
+                        <span class="tech-tag">Frontend</span>
+                        <span class="tech-dot">•</span>
+                        <span class="tech-tag">Backend</span>
+                        <span class="tech-dot">•</span>
+                        <span class="tech-tag">Mobile</span>
+                        <span class="tech-dot">•</span>
+                        <span class="tech-tag">DevOps</span>
+                    </div>
+
+                    <div class="hero-social reveal-up delay-600">
+                        <a href="https://github.com/muhammadwaleed-22" target="_blank" rel="noopener noreferrer"
+                            aria-label="Visit Muhammad Waleed on GitHub">
+                            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="22"
+                                height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="https://vercel.com/muhammad-waleeds-projects-20d4ff09" target="_blank"
+                            rel="noopener noreferrer" aria-label="View Muhammad Waleed's projects on Vercel">
+                            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="22"
+                                height="22" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2L24 22H0L12 2Z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/muhammad-waleed-5062703a8/" target="_blank"
+                            rel="noopener noreferrer" aria-label="Visit Muhammad Waleed on LinkedIn">
+                            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="22"
+                                height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="mailto:muhammadwaleed1496@gmail.com" aria-label="Email Muhammad Waleed">
+                            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="22"
+                                height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/923222137577" target="_blank" rel="noopener noreferrer"
+                            aria-label="Message Muhammad Waleed on WhatsApp">
+                            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="22"
+                                height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual reveal-scale delay-700" style="position: relative;">
+                    <div id="virtual-cursor" class="virtual-cursor">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="black" stroke="white" stroke-width="1.5">
+                            <path
+                                d="M3,3 L10.07,19.97 L12.58,14.41 L18.84,20.67 L20.67,18.84 L14.41,12.58 L19.97,10.07 L3,3 Z" />
+                        </svg>
+                    </div>
+                    <div class="code-editor-card">
+                        <div class="code-editor-header" style="justify-content: space-between;">
+                            <div style="display: flex; align-items: center;">
+                                <div class="window-controls">
+                                    <span class="control-dot close"></span>
+                                    <span class="control-dot minimize"></span>
+                                    <span class="control-dot maximize"></span>
+                                </div>
+                                <div class="file-name">Terminal</div>
+                            </div>
+                            <button id="run-code-btn" class="run-code-btn" aria-label="Run Code">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--accent-primary)"
+                                    stroke="var(--accent-primary)" stroke-width="2">
+                                    <path d="M5 3l14 9-14 9V3z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="code-editor-body" id="code-editor-body">
+
+                            <pre><code><span class="keyword">const</span> <span class="variable">developer</span> <span class="operator">=</span> {
+  <span class="property">name</span>: <span class="string">"Muhammad Waleed"</span>,
+  <span class="property">role</span>: <span class="string">"Full Stack Engineer"</span>,
+  <span class="property">focus</span>: [
+    <span class="string">"Frontend"</span>,
+    <span class="string">"Backend"</span>,
+    <span class="string">"Mobile"</span>,
+    <span class="string">"DevOps"</span>
+  ],
+  <span class="property">mindset</span>: <span class="string">"Build. Learn. Improve."</span>
+};</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about section">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-label">01. About Me</span>
+                    <h2 class="section-title">Professional Summary</h2>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-main reveal-up delay-100">
+                        <p class="body-text" style="text-align: justify;">
+                            I am a Junior Software Engineer with a strong foundation in modern web and application
+                            development. I specialize in building responsive frontend interfaces, robust backend APIs,
+                            and cross-platform mobile applications that solve practical problems.
+                        </p>
+                        <p class="body-text" style="text-align: justify;">
+                            My technical background spans ReactJS, .NET (C#, Blazor, ASP.NET Core), Python (Flask), and
+                            React Native. I prioritize clean architecture, offline-first capabilities, and reliable data
+                            layers using SQL Server, MySQL, and SQLite.
+                        </p>
+                        <p class="body-text" style="text-align: justify;">
+                            Alongside my engineering work, I bring valuable experience in technical communication and
+                            teaching, which helps me collaborate effectively, document systems clearly, and write
+                            maintainable code that delivers measurable value.
+                        </p>
+                        <p class="body-text" style="text-align: justify;">
+                            I am highly driven by continuous learning and exploring modern technologies to stay ahead in
+                            the
+                            ever-evolving software landscape. Whether it involves designing scalable architectures,
+                            optimizing
+                            application performance, or integrating AI-assisted tools into development workflows, I am
+                            committed
+                            to delivering high-quality, user-centric digital experiences.
+                        </p>
+
+                        <!-- <div class="profile-details-block"
+                            style="margin-top: 2rem; background: var(--surface); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border);">
+                            <h3 class="card-heading" style="margin-bottom: 1rem; font-size: 1.1rem;">Personal Details
+                            </h3>
+                            <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;"
+                                class="small-text">
+                                <li><strong>Email:</strong> muhammadwaleed1496@gmail.com</li>
+                                <li><strong>Phone:</strong> +92 322 2137577</li>
+                                <li><strong>Gender:</strong> Male</li>
+                                <li><strong>Marital Status:</strong> Married</li>
+                                <li><strong>Father Name:</strong> Muhammad Aslam Qadri</li>
+                            </ul>
+                        </div> -->
+
+                        <div class="about-stats">
+                            <span class="stat-label">Full Stack</span>
+                            <span class="stat-label">Web + Mobile</span>
+                            <span class="stat-label">Frontend + Backend</span>
+                        </div>
+                    </div>
+
+                    <div class="about-sidebar reveal-left delay-300">
+                        <div class="info-card">
+                            <h3 class="card-heading">Education</h3>
+                            <p class="body-text" style="margin-bottom: 0.2rem;"><strong>BS Computer Science</strong></p>
+                            <p class="small-text" style="margin-bottom: 0.2rem;">GC University Faisalabad</p>
+                            <p class="small-text" style="margin-bottom: 1rem;">CGPA: 3.53</p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3 class="card-heading">Professional Background</h3>
+                            <ul class="body-list" style="margin-bottom: 0.2rem;">
+                                <li>Junior Software Engineer</li>
+                                <li>Experienced Educator</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-card highlight-card">
+                            <h3 class="card-heading">Product-Focused Engineering</h3>
+                            <p class="small-text">Turning real operational problems into practical software products
+                                using ReactJS, React Native, Blazor, .NET & Python.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="skills" class="skills section">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-label">03. Technologies</span>
+                    <h2 class="section-title">Core Competencies</h2>
+                </div>
+
+                <div class="skills-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+                    <div class="card card-hover reveal-up">
+                        <div class="card-header">
+                            <h3 class="card-heading">Frontend</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="skill-chips"><span class="chip primary">JavaScript ES6+</span><span
+                                    class="chip primary">ReactJS</span><span class="chip primary">Blazor</span><span
+                                    class="chip">HTML5</span><span class="chip">CSS3</span><span
+                                    class="chip">SASS</span><span class="chip">Tailwind CSS</span><span
+                                    class="chip">Bootstrap</span><span class="chip">jQuery</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-hover reveal-up">
+                        <div class="card-header">
+                            <h3 class="card-heading">State & Architecture</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="skill-chips"><span class="chip primary">React Hooks</span><span
+                                    class="chip primary">Redux</span><span class="chip primary">Redux
+                                    Toolkit</span><span class="chip primary">Context API</span><span
+                                    class="chip">Zustand</span><span class="chip">Lazy Loading</span><span
+                                    class="chip">Code Splitting</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-hover reveal-up">
+                        <div class="card-header">
+                            <h3 class="card-heading">Backend</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="skill-chips"><span class="chip primary">Python</span><span
+                                    class="chip primary">Flask</span><span class="chip primary">C#</span><span
+                                    class="chip primary">ASP.NET Core</span><span class="chip primary">REST
+                                    APIs</span><span class="chip">Web API</span><span class="chip">MVC</span><span
+                                    class="chip">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">SQL
+                                    Server</span><span class="chip">SSMS</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-hover reveal-up">
+                        <div class="card-header">
+                            <h3 class="card-heading">Mobile</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="skill-chips"><span class="chip primary">React Native</span><span
+                                    class="chip primary">Expo</span><span class="chip">TypeScript</span><span
+                                    class="chip">AsyncStorage</span><span class="chip">SQLite</span><span
+                                    class="chip">Firebase</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-hover reveal-up">
+                        <div class="card-header">
+                            <h3 class="card-heading">UI Libraries</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="skill-chips"><span class="chip primary">HeroUI</span><span
+                                    class="chip">RSuite</span><span class="chip">Material UI</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-hover reveal-up">
+                        <div class="card-header">
+                            <h3 class="card-heading">Tools & DevOps</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="skill-chips"><span class="chip primary">Git</span><span
+                                    class="chip primary">GitHub</span><span class="chip">Vercel</span><span
+                                    class="chip">Postman</span><span class="chip">VS Code</span><span
+                                    class="chip">PM2</span><span class="chip">Gunicorn</span><span
+                                    class="chip">Nginx</span><span class="chip">Render</span><span
+                                    class="chip">SnapDeploy</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tools-section reveal-up">
+                    <h3 class="tools-heading">Tools & Technologies</h3>
+                    <div class="tools-marquee-container">
+                        <!-- Row 1: Right to Left -->
+                        <div class="tools-marquee row-1">
+                            <div class="tools-track">
+                                <!-- Set 1 -->
+                                <div class="tool-item"><i class="devicon-c-plain colored"></i><span
+                                        class="tool-label">C</span></div>
+                                <div class="tool-item"><i class="devicon-cplusplus-plain colored"></i><span
+                                        class="tool-label">C++</span></div>
+                                <div class="tool-item"><i class="devicon-csharp-plain colored"></i><span
+                                        class="tool-label">C#</span></div>
+                                <div class="tool-item"><i class="devicon-python-plain colored"></i><span
+                                        class="tool-label">Python</span></div>
+                                <div class="tool-item"><i class="devicon-javascript-plain colored"></i><span
+                                        class="tool-label">JavaScript</span></div>
+                                <div class="tool-item"><i class="devicon-typescript-plain colored"></i><span
+                                        class="tool-label">TypeScript</span></div>
+                                <div class="tool-item"><i class="devicon-html5-plain colored"></i><span
+                                        class="tool-label">HTML5</span></div>
+                                <div class="tool-item"><i class="devicon-css3-plain colored"></i><span
+                                        class="tool-label">CSS3</span></div>
+                                <div class="tool-item"><i class="devicon-bootstrap-plain colored"></i><span
+                                        class="tool-label">Bootstrap</span></div>
+                                <div class="tool-item"><i class="devicon-tailwindcss-original colored"></i><span
+                                        class="tool-label">Tailwind CSS</span></div>
+                                <div class="tool-item"><i class="devicon-jquery-plain colored"></i><span
+                                        class="tool-label">jQuery</span></div>
+                                <div class="tool-item"><i class="devicon-react-original colored"></i><span
+                                        class="tool-label">React.js</span></div>
+                                <div class="tool-item"><i class="devicon-react-original colored"></i><span
+                                        class="tool-label">React Native</span></div>
+                                <div class="tool-item"><i class="devicon-dotnetcore-plain colored"></i><span
+                                        class="tool-label">Blazor</span></div>
+                                <div class="tool-item"><i class="devicon-dotnetcore-plain colored"></i><span
+                                        class="tool-label">ASP.NET Core</span></div>
+
+                                <!-- Duplicate Set 1 -->
+                                <div class="tool-item"><i class="devicon-c-plain colored"></i><span
+                                        class="tool-label">C</span></div>
+                                <div class="tool-item"><i class="devicon-cplusplus-plain colored"></i><span
+                                        class="tool-label">C++</span></div>
+                                <div class="tool-item"><i class="devicon-csharp-plain colored"></i><span
+                                        class="tool-label">C#</span></div>
+                                <div class="tool-item"><i class="devicon-python-plain colored"></i><span
+                                        class="tool-label">Python</span></div>
+                                <div class="tool-item"><i class="devicon-javascript-plain colored"></i><span
+                                        class="tool-label">JavaScript</span></div>
+                                <div class="tool-item"><i class="devicon-typescript-plain colored"></i><span
+                                        class="tool-label">TypeScript</span></div>
+                                <div class="tool-item"><i class="devicon-html5-plain colored"></i><span
+                                        class="tool-label">HTML5</span></div>
+                                <div class="tool-item"><i class="devicon-css3-plain colored"></i><span
+                                        class="tool-label">CSS3</span></div>
+                                <div class="tool-item"><i class="devicon-bootstrap-plain colored"></i><span
+                                        class="tool-label">Bootstrap</span></div>
+                                <div class="tool-item"><i class="devicon-tailwindcss-original colored"></i><span
+                                        class="tool-label">Tailwind CSS</span></div>
+                                <div class="tool-item"><i class="devicon-jquery-plain colored"></i><span
+                                        class="tool-label">jQuery</span></div>
+                                <div class="tool-item"><i class="devicon-react-original colored"></i><span
+                                        class="tool-label">React.js</span></div>
+                                <div class="tool-item"><i class="devicon-react-original colored"></i><span
+                                        class="tool-label">React Native</span></div>
+                                <div class="tool-item"><i class="devicon-dotnetcore-plain colored"></i><span
+                                        class="tool-label">Blazor</span></div>
+                                <div class="tool-item"><i class="devicon-dotnetcore-plain colored"></i><span
+                                        class="tool-label">ASP.NET Core</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Row 2: Left to Right -->
+                        <div class="tools-marquee row-2">
+                            <div class="tools-track">
+                                <!-- Set 2 -->
+                                <div class="tool-item"><i class="devicon-flask-original colored"></i><span
+                                        class="tool-label">Flask</span></div>
+                                <div class="tool-item"><i class="devicon-mysql-plain colored"></i><span
+                                        class="tool-label">MySQL</span></div>
+                                <div class="tool-item"><i class="devicon-sqlite-plain colored"></i><span
+                                        class="tool-label">SQLite</span></div>
+                                <div class="tool-item"><i class="devicon-microsoftsqlserver-plain colored"></i><span
+                                        class="tool-label">SQL Server</span></div>
+                                <div class="tool-item"><i class="devicon-postgresql-plain colored"></i><span
+                                        class="tool-label">PostgreSQL</span></div>
+                                <div class="tool-item"><i class="devicon-firebase-plain colored"></i><span
+                                        class="tool-label">Firebase</span></div>
+                                <div class="tool-item"><i class="devicon-materialui-plain colored"></i><span
+                                        class="tool-label">Material UI</span></div>
+                                <div class="tool-item"><i class="devicon-git-plain colored"></i><span
+                                        class="tool-label">Git</span></div>
+                                <div class="tool-item"><i class="devicon-github-original colored"></i><span
+                                        class="tool-label">GitHub</span></div>
+                                <div class="tool-item"><i class="devicon-vscode-plain colored"></i><span
+                                        class="tool-label">VS Code</span></div>
+                                <div class="tool-item"><i class="devicon-postman-plain colored"></i><span
+                                        class="tool-label">Postman</span></div>
+                                <div class="tool-item"><i class="devicon-vercel-original colored"></i><span
+                                        class="tool-label">Vercel</span></div>
+                                <div class="tool-item"><i class="devicon-nginx-original colored"></i><span
+                                        class="tool-label">Nginx</span></div>
+                                <div class="tool-item"><i class="devicon-html5-plain colored"></i><span
+                                        class="tool-label">Expo</span></div>
+                                <div class="tool-item"><i class="devicon-nodejs-plain colored"></i><span
+                                        class="tool-label">PM2</span></div>
+
+                                <!-- Duplicate Set 2 -->
+                                <div class="tool-item"><i class="devicon-flask-original colored"></i><span
+                                        class="tool-label">Flask</span></div>
+                                <div class="tool-item"><i class="devicon-mysql-plain colored"></i><span
+                                        class="tool-label">MySQL</span></div>
+                                <div class="tool-item"><i class="devicon-sqlite-plain colored"></i><span
+                                        class="tool-label">SQLite</span></div>
+                                <div class="tool-item"><i class="devicon-microsoftsqlserver-plain colored"></i><span
+                                        class="tool-label">SQL Server</span></div>
+                                <div class="tool-item"><i class="devicon-postgresql-plain colored"></i><span
+                                        class="tool-label">PostgreSQL</span></div>
+                                <div class="tool-item"><i class="devicon-firebase-plain colored"></i><span
+                                        class="tool-label">Firebase</span></div>
+                                <div class="tool-item"><i class="devicon-materialui-plain colored"></i><span
+                                        class="tool-label">Material UI</span></div>
+                                <div class="tool-item"><i class="devicon-git-plain colored"></i><span
+                                        class="tool-label">Git</span></div>
+                                <div class="tool-item"><i class="devicon-github-original colored"></i><span
+                                        class="tool-label">GitHub</span></div>
+                                <div class="tool-item"><i class="devicon-vscode-plain colored"></i><span
+                                        class="tool-label">VS Code</span></div>
+                                <div class="tool-item"><i class="devicon-postman-plain colored"></i><span
+                                        class="tool-label">Postman</span></div>
+                                <div class="tool-item"><i class="devicon-vercel-original colored"></i><span
+                                        class="tool-label">Vercel</span></div>
+                                <div class="tool-item"><i class="devicon-nginx-original colored"></i><span
+                                        class="tool-label">Nginx</span></div>
+                                <div class="tool-item"><i class="devicon-html5-plain colored"></i><span
+                                        class="tool-label">Expo</span></div>
+                                <div class="tool-item"><i class="devicon-nodejs-plain colored"></i><span
+                                        class="tool-label">PM2</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects section">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-label">05. Work</span>
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-description body-text">
+                        A selection of applications built around real-world workflows, usability, and scalable
+                        architecture.
+                    </p>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 1: CS Companion -->
+                    <article class="project-card card card-hover reveal-up delay-100">
+                        <div class="project-media">
+                            <img src="assets/images/cs_companion_extended.webp" alt="CS Companion App" class="project-img"
+                                loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-type">Offline-first Computer Science App</span>
+                            <h3 class="project-title">CS Companion</h3>
+                            <p class="project-description body-text">
+                                A flagship offline-first learning platform for Punjab Board CS students featuring
+                                dual-book architecture, AI assistance, SQLite persistence, and PDF generation.
+                            </p>
+                            <ul class="project-tech">
+                                <li>React Native</li>
+                                <li>Expo</li>
+                                <li>SQLite</li>
+                                <li>Groq AI</li>
+                            </ul>
+                            <div class="project-actions">
+                                <a href="projects/cs-companion.html" class="btn btn-primary"
+                                    aria-label="View CS Companion details">View Project</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2: Stitchify -->
+                    <article class="project-card card card-hover reveal-up delay-200">
+                        <div class="project-media">
+                            <img src="assets/images/stitchify_extended.webp" alt="Stitchify App" class="project-img"
+                                loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-type">Tailor Management System</span>
+                            <h3 class="project-title">Stitchify</h3>
+                            <p class="project-description body-text">
+                                Stitchify helps tailoring businesses manage customer measurements, orders, inventory,
+                                stock, expenses, purchases, and backup workflows.
+                            </p>
+                            <ul class="project-tech">
+                                <li>React Native</li>
+                                <li>Expo</li>
+                                <li>SQLite</li>
+                                <li>Firebase</li>
+                            </ul>
+                            <div class="project-actions">
+                                <a href="projects/stitchify.html" class="btn btn-primary"
+                                    aria-label="View Stitchify details">View Project</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3: POS App -->
+                    <article class="project-card card card-hover reveal-up delay-300">
+                        <div class="project-media">
+                            <img src="assets/images/pos_app.webp" alt="POS App" class="project-img" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-type">Smart POS & Ledger App</span>
+                            <h3 class="project-title">POS App</h3>
+                            <p class="project-description body-text">
+                                A point-of-sale and business management application covering inventory, receipt
+                                generation, stock, expenses, purchases, and barcode scanning.
+                            </p>
+                            <ul class="project-tech">
+                                <li>React Native</li>
+                                <li>Expo</li>
+                                <li>SQLite</li>
+                                <li>Firebase</li>
+                            </ul>
+                            <div class="project-actions">
+                                <a href="projects/pos-app.html" class="btn btn-primary"
+                                    aria-label="View POS App details">View Project</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 4: LMS -->
+                    <article class="project-card card card-hover reveal-up delay-400">
+                        <div class="project-media">
+                            <img src="assets/images/lms_app_extended.webp" alt="LMS App" class="project-img" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-type">Learning Management System</span>
+                            <h3 class="project-title">LMS — Courses</h3>
+                            <p class="project-description body-text">
+                                A Learning Management System for course management with dynamic course listings,
+                                responsive frontend interfaces, backend APIs, and relational data storage.
+                            </p>
+                            <ul class="project-tech">
+                                <li>ReactJS</li>
+                                <li>Flask</li>
+                                <li>MySQL</li>
+                                <li>Tailwind CSS</li>
+                            </ul>
+                            <div class="project-actions">
+                                <a href="projects/lms.html" class="btn btn-primary" aria-label="View LMS details">View
+                                    Project</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="section-header reveal-up" style="margin-top: 4rem;">
+                    <h2 class="section-title" style="font-size: 1.5rem;">Other Notable Projects</h2>
+                </div>
+
+                <div class="skills-grid" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
+                    <div class="card card-hover reveal-up delay-100" style="padding: 1.5rem;">
+                        <h4 style="margin: 0 0 0.5rem 0;">Vidify</h4>
+                        <div class="small-text" style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            Image-to-Video Shopify App</div>
+                        <div class="skill-chips"><span class="chip">ReactJS</span><span class="chip">Redux</span><span
+                                class="chip">REST API</span></div>
+                    </div>
+                    <div class="card card-hover reveal-up delay-200" style="padding: 1.5rem;">
+                        <h4 style="margin: 0 0 0.5rem 0;">PakFix</h4>
+                        <div class="small-text" style="color: var(--text-secondary); margin-bottom: 1rem;">Road Fix &
+                            Issue Reporting</div>
+                        <div class="skill-chips"><span class="chip">ReactJS</span><span class="chip">Redux</span><span
+                                class="chip">Tailwind CSS</span></div>
+                    </div>
+                    <div class="card card-hover reveal-up delay-300" style="padding: 1.5rem;">
+                        <h4 style="margin: 0 0 0.5rem 0;">ChitChat</h4>
+                        <div class="small-text" style="color: var(--text-secondary); margin-bottom: 1rem;">AI Chatbot
+                        </div>
+                        <div class="skill-chips"><span class="chip">ReactJS</span><span class="chip">Groq AI</span><span
+                                class="chip">Zustand</span></div>
+                    </div>
+                    <div class="card card-hover reveal-up delay-400" style="padding: 1.5rem;">
+                        <h4 style="margin: 0 0 0.5rem 0;">Blood Donation System</h4>
+                        <div class="small-text" style="color: var(--text-secondary); margin-bottom: 1rem;">Donor
+                            Management Platform</div>
+                        <div class="skill-chips"><span class="chip">ReactJS</span><span class="chip">Redux</span><span
+                                class="chip">REST API</span></div>
+                    </div>
+                    <div class="card card-hover reveal-up delay-500" style="padding: 1.5rem;">
+                        <h4 style="margin: 0 0 0.5rem 0;">Popcornflix</h4>
+                        <div class="small-text" style="color: var(--text-secondary); margin-bottom: 1rem;">Movie
+                            Browsing App</div>
+                        <div class="skill-chips"><span class="chip">ReactJS</span><span class="chip">Tailwind
+                                CSS</span><span class="chip">REST API</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="experience section">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-label">04. Experience</span>
+                    <h2 class="section-title">Professional Journey</h2>
+                </div>
+
+                <div class="timeline">
+                    <!-- Current Role -->
+                    <div class="timeline-item reveal-up">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content card card-hover">
+                            <span class="timeline-date">Sept 2026 — Present</span>
+                            <h3 class="timeline-role">Junior Software Engineer</h3>
+                            <h4 class="timeline-company">ZiePie LLC</h4>
+                            <ul class="body-text body-list">
+                                <li>Developing responsive web applications and desktop applications.</li>
+                                <li>Building robust backend services and REST APIs to support scalable operations.</li>
+                                <li>Collaborating on architectural decisions and data modeling.</li>
+                                <li>Deploying applications to production environments.</li>
+                            </ul>
+                            <div class="skill-chips mt-3">
+                                <span class="chip primary">Blazor</span>
+                                <span class="chip primary">Asp.Net Core</span>
+                                <span class="chip primary">SQL Server Management System</span>
+                                <span class="chip">Web Api</span>
+                                <span class="chip">Deployment</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Previous Role 1 -->
+                    <div class="timeline-item reveal-up delay-100">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content card card-hover">
+                            <span class="timeline-date">April 2025 — April 2026</span>
+                            <h3 class="timeline-role">Full Stack Engineer</h3>
+                            <h4 class="timeline-company">UMEGS</h4>
+                            <ul class="body-text body-list">
+                                <li>Engineered robust web applications integrating front-end and back-end logic.</li>
+                                <li>Optimized database queries and API response times for heavy user traffic.</li>
+                                <li>Implemented secure user authentication and authorization workflows.</li>
+                            </ul>
+                            <div class="skill-chips mt-3">
+                                <span class="chip primary">ReactJS</span>
+                                <span class="chip primary">React Native</span>
+                                <span class="chip">TypeScript</span>
+                                <span class="chip">SQLite</span>
+                                <span class="chip">Firebase</span>
+                                <span class="chip">Flask</span>
+                                <span class="chip">Rest Api</span>
+                                <span class="chip">Deployment</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Previous Role 2 -->
+                    <div class="timeline-item reveal-up delay-200">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content card card-hover">
+                            <span class="timeline-date">2024 — 2025</span>
+                            <h3 class="timeline-role">Lecturer & HOD of CS Department</h3>
+                            <h4 class="timeline-company">Best Education System College Kharian</h4>
+                            <ul class="body-text body-list">
+                                <li>Taught core computer science concepts, programming languages, and logic.</li>
+                                <li>Developed comprehensive curriculum and technical assessments for students.</li>
+                                <li>Mentored students on practical software projects and industry readiness.</li>
+                            </ul>
+                            <div class="skill-chips mt-3">
+                                <span class="chip primary">Teaching</span>
+                                <span class="chip primary">Mentorship</span>
+                                <span class="chip">Management</span>
+                                <span class="chip">C++</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact section">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-label">06. Contact</span>
+                    <h2 class="section-title">Let's Build Something Useful</h2>
+                    <p class="section-description body-text">
+                        Have a project, opportunity, or collaboration in mind? Send a message and I'll get back to you.
+                    </p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-info reveal-right delay-100">
+                        <div class="card contact-card">
+                            <h3>Let's work together</h3>
+                            <p class="body-text">I'm currently available for full-time roles and freelance projects.</p>
+
+                            <ul class="contact-methods">
+                                <li>
+                                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"
+                                        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                        </path>
+                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                    </svg>
+                                    <a href="mailto:muhammadwaleed1496@gmail.com"
+                                        class="body-text">muhammadwaleed1496@gmail.com</a>
+                                </li>
+                                <li style="margin-top: 1rem;">
+                                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"
+                                        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                        </path>
+                                    </svg>
+                                    <a href="tel:+923222137577" class="body-text">+92 322 2137577</a>
+                                </li>
+                                <li style="margin-top: 1rem;">
+                                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"
+                                        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                        </path>
+                                    </svg>
+                                    <a href="https://github.com/muhammadwaleed-22" target="_blank"
+                                        rel="noopener noreferrer" class="body-text">GitHub</a>
+                                </li>
+                                <li style="margin-top: 1rem;">
+                                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"
+                                        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                        </path>
+                                        <rect x="2" y="9" width="4" height="12"></rect>
+                                        <circle cx="4" cy="4" r="2"></circle>
+                                    </svg>
+                                    <a href="https://www.linkedin.com/in/muhammad-waleed-5062703a8/" target="_blank"
+                                        rel="noopener noreferrer" class="body-text">LinkedIn</a>
+                                </li>
+                                <li style="margin-top: 1rem;">
+                                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"
+                                        width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2L24 22H0L12 2Z" />
+                                    </svg>
+                                    <a href="https://vercel.com/muhammad-waleeds-projects-20d4ff09" target="_blank"
+                                        rel="noopener noreferrer" class="body-text">Vercel</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-container reveal-left delay-200">
+                        <form id="contact-form" class="card" novalidate>
+                            <div class="form-group">
+                                <label for="contact-name">Name</label>
+                                <input type="text" id="contact-name" name="name" autocomplete="name" required
+                                    minlength="2" maxlength="100" placeholder="John Doe">
+                                <span class="form-error" id="error-name" aria-live="polite"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact-email">Email</label>
+                                <input type="email" id="contact-email" name="email" autocomplete="email" required
+                                    maxlength="254" placeholder="john@example.com">
+                                <span class="form-error" id="error-email" aria-live="polite"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact-subject">Subject</label>
+                                <input type="text" id="contact-subject" name="subject" required minlength="3"
+                                    maxlength="150" placeholder="Project Inquiry">
+                                <span class="form-error" id="error-subject" aria-live="polite"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact-message">Message</label>
+                                <textarea id="contact-message" name="message" required minlength="10" maxlength="3000"
+                                    rows="6" placeholder="Hello, I'd like to discuss..."></textarea>
+                                <span class="form-error" id="error-message" aria-live="polite"></span>
+                            </div>
+
+                            <!-- Honeypot -->
+                            <div class="visually-hidden" aria-hidden="true" style="display: none;">
+                                <label for="contact-website">Website</label>
+                                <input type="text" id="contact-website" name="website" tabindex="-1">
+                            </div>
+
+                            <button type="submit" id="contact-submit" class="btn btn-primary w-100">
+                                <span class="btn-text">Send Message</span>
+                            </button>
+
+                            <div id="contact-status" class="form-status" role="status" aria-live="polite"></div>
+                            <div class="paper-plane-container">
+                                <svg class="paper-plane" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <div class="success-check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">Muhammad Waleed</div>
+                <p class="footer-tagline">Building fast, modern, and premium web experiences.</p>
+
+                <nav class="footer-nav">
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/muhammad-waleed-5062703a8/" target="_blank"
+                        rel="noopener noreferrer" aria-label="Visit Muhammad Waleed on LinkedIn">
+                        <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                            </path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/muhammadwaleed-22" target="_blank" rel="noopener noreferrer"
+                        aria-label="Visit Muhammad Waleed on GitHub">
+                        <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                            </path>
+                        </svg>
+                    </a>
+                    <a href="https://vercel.com/muhammad-waleeds-projects-20d4ff09" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Muhammad Waleed's projects on Vercel">
+                        <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2L24 22H0L12 2Z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:muhammadwaleed1496@gmail.com" aria-label="Email Muhammad Waleed">
+                        <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </a>
+                    <a href="https://wa.me/923222137577" target="_blank" rel="noopener noreferrer"
+                        aria-label="Message Muhammad Waleed on WhatsApp">
+                        <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p><a href="http://127.0.0.1:5000/admin/login" class="admin-link"
+                        style="color:inherit; text-decoration:none;">&copy;</a> <span id="current-year"></span> Muhammad
+                    Waleed. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating AI Chatbot -->
+    <div id="ai-chatbot-container" class="chatbot-container">
+        <!-- Floating Trigger Button -->
+        <button id="chatbot-trigger" class="chatbot-trigger" aria-label="Open AI assistant" aria-expanded="false"
+            aria-controls="ai-chat-panel">
+            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="sparkle-icon">
+                <path
+                    d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.3 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z">
+                </path>
+                <path d="M20 3v4"></path>
+                <path d="M22 5h-4"></path>
+                <path d="M4 17v2"></path>
+                <path d="M5 18H3"></path>
+            </svg>
+        </button>
+
+        <!-- Chat Panel -->
+        <aside id="ai-chat-panel" class="ai-chat-panel" aria-hidden="true" aria-label="Waleed AI Portfolio Assistant">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="chat-avatar">
+                        <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16"
+                            height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 8V4H8"></path>
+                            <rect width="16" height="12" x="4" y="8" rx="2"></rect>
+                            <path d="M2 14h2"></path>
+                            <path d="M20 14h2"></path>
+                            <path d="M15 13v2"></path>
+                            <path d="M9 13v2"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="chat-title">Waleed AI</h3>
+                        <span class="chat-subtitle"><span class="status-dot"></span> Portfolio Assistant</span>
+                    </div>
+                </div>
+                <button id="chatbot-close" class="chatbot-close" aria-label="Close AI assistant">
+                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <div id="chat-messages" class="chat-messages" aria-live="polite">
+                <!-- Welcome Message and Messages get injected here -->
+            </div>
+
+            <div id="chat-suggestions" class="chat-suggestions">
+                <!-- Suggested Questions get injected here -->
+            </div>
+
+            <div class="chat-composer">
+                <textarea id="chat-input" class="chat-input" rows="1" placeholder="Ask about skills, projects..."
+                    aria-label="Message Waleed AI" maxlength="1500"></textarea>
+                <button id="chat-send" class="chat-send" aria-label="Send message" disabled>
+                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </aside>
+    </div>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Muhammad Waleed",
+      "jobTitle": "Junior Software Engineer",
+      "knowsAbout": ["Frontend Development", "ReactJS", ".NET Development", "Python", "Flask", "React Native"],
+      "alumniOf": "GC University, Faisalabad, Pakistan",
+      "sameAs": [
+        "https://www.linkedin.com/in/muhammad-waleed-5062703a8/",
+        "https://github.com/muhammadwaleed-22"
+      ]
+    }
+    </script>
+    <script src="js/main.js" type="module"></script>
+</body>
+
+</html>

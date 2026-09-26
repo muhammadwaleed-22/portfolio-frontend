@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  PENDING DEPLOYMENT REQUIREMENT: 
+  Replace https://YOUR-FINAL-DOMAIN.com with the actual production domain before going live.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://YOUR-FINAL-DOMAIN.com/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://YOUR-FINAL-DOMAIN.com/projects/stitchify.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://YOUR-FINAL-DOMAIN.com/projects/pos-app.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://YOUR-FINAL-DOMAIN.com/projects/lms.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+</urlset>
