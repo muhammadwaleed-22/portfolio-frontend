@@ -80,13 +80,26 @@ export function initChatbot() {
         });
     }
 
+    function escapeHTML(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
+    function parseMarkdown(text) {
+        let html = escapeHTML(text);
+        html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+        html = html.replace(/\n/g, '<br>');
+        return html;
+    }
+
     function renderMessage(text, role, isError = false) {
         const div = document.createElement('div');
         div.className = `chat-message chat-message--${role}`;
         if (isError) div.classList.add('chat-message--error');
         
-        // Safe rendering of text to avoid XSS (pre-wrap handles newlines)
-        div.textContent = text;
+        div.innerHTML = parseMarkdown(text);
 
         messagesContainer.appendChild(div);
         scrollToBottom();
@@ -179,11 +192,7 @@ export function initChatbot() {
                     }
                     
                     // Render safely with cursor
-                    div.textContent = renderedText;
-                    const cursor = document.createElement('span');
-                    cursor.className = 'streaming-cursor';
-                    cursor.textContent = '▍';
-                    div.appendChild(cursor);
+                    div.innerHTML = parseMarkdown(renderedText) + '<span class="streaming-cursor">▍</span>';
                     
                     // Auto-scroll
                     const isNearBottom = messagesContainer.scrollHeight - messagesContainer.scrollTop - messagesContainer.clientHeight < 120;
@@ -230,7 +239,7 @@ export function initChatbot() {
             await queuePromise;
 
             // Remove streaming cursor once done
-            div.textContent = fullAssistantResponse;
+            div.innerHTML = parseMarkdown(fullAssistantResponse);
 
             // Add to history
             conversationHistory.push({ role: 'user', parts: userText });
