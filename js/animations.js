@@ -35,11 +35,13 @@ const originalCodeHTML = `<pre><code><span class="keyword">const</span> <span cl
 };</code></pre>`;
 
 function triggerTerminalAnimation(container) {
+    if (isProfileAnimationRunning) return;
+    
     safeSetTimeout(() => {
+        if (isProfileAnimationRunning) return;
         const cursor = document.getElementById('virtual-cursor');
         const runBtn = document.getElementById('run-code-btn');
         const editorBody = document.getElementById('code-editor-body');
-        const fileName = container.querySelector('.file-name');
         if(!cursor || !runBtn || !editorBody) return;
 
         const btnRect = runBtn.getBoundingClientRect();
@@ -54,31 +56,76 @@ function triggerTerminalAnimation(container) {
         cursor.style.left = targetLeft + 'px';
 
         safeSetTimeout(() => {
+            if (isProfileAnimationRunning) return;
             runBtn.classList.add('active');
             
             safeSetTimeout(() => {
                 runBtn.classList.remove('active');
                 cursor.style.opacity = '0';
                 
-                if(fileName) fileName.innerText = 'Initializing...';
-                editorBody.innerHTML = `
-                    <div class="modern-loader-container">
-                        <div class="modern-spinner"></div>
-                    </div>
-                `;
-                
-                safeSetTimeout(() => {
-                    if(fileName) fileName.innerText = 'Profile Loaded';
-                    editorBody.innerHTML = `
-                        <div class="profile-image-wrapper fade-in-scale">
-                            <img src="assets/images/profile-light.jpg" alt="Profile Output Light" class="profile-output-image profile-img-light" onerror="this.src='https://via.placeholder.com/150';"/>
-                            <img src="assets/images/profile-dark.jpg" alt="Profile Output Dark" class="profile-output-image profile-img-dark" onerror="this.src='https://via.placeholder.com/150';"/>
-                        </div>
-                    `;
-                }, 2000);
+                if (isProfileAnimationRunning) return;
+                // Start the terminal output animation
+                runProfileAnimation();
             }, 200);
         }, 1500);
     }, 500);
+}
+
+async function autoTypeAndRunCode(container) {
+    const editorBody = document.getElementById('code-editor-body');
+    if (!editorBody) return;
+    
+    const preCode = document.createElement('pre');
+    const codeEl = document.createElement('code');
+    preCode.appendChild(codeEl);
+    editorBody.innerHTML = '';
+    editorBody.appendChild(preCode);
+    
+    const cursorEl = document.createElement('span');
+    cursorEl.className = 'cursor';
+    cursorEl.style.animation = 'blink-cursor 1s step-end infinite';
+    cursorEl.innerText = '_';
+    codeEl.appendChild(cursorEl);
+
+    const segments = [
+        { text: "const ", class: "keyword" },
+        { text: "developer ", class: "variable" },
+        { text: "= {\n", class: "operator" },
+        { text: "  name: ", class: "property" },
+        { text: '"Muhammad Waleed",\n', class: "string" },
+        { text: "  role: ", class: "property" },
+        { text: '"Full Stack Engineer",\n', class: "string" },
+        { text: "  focus: [\n", class: "property" },
+        { text: '    "Frontend",\n', class: "string" },
+        { text: '    "Backend",\n', class: "string" },
+        { text: '    "Mobile",\n', class: "string" },
+        { text: '    "DevOps"\n', class: "string" },
+        { text: "  ],\n", class: "property" },
+        { text: "  mindset: ", class: "property" },
+        { text: '"Build. Learn. Improve."\n', class: "string" },
+        { text: "};", class: "operator" }
+    ];
+
+    for (const segment of segments) {
+        // If user manually clicked the button, stop the auto-typing
+        if (isProfileAnimationRunning) return;
+        
+        const span = document.createElement('span');
+        span.className = segment.class;
+        codeEl.insertBefore(span, cursorEl);
+        
+        for (let i = 0; i < segment.text.length; i++) {
+            if (isProfileAnimationRunning) return;
+            span.innerHTML += segment.text[i];
+            await new Promise(r => setTimeout(r, 10 + Math.random() * 20));
+        }
+    }
+    
+    await new Promise(r => setTimeout(r, 500));
+    if (isProfileAnimationRunning) return;
+    cursorEl.remove();
+
+    triggerTerminalAnimation(container);
 }
 
 let isProfileAnimationRunning = false;
@@ -205,6 +252,13 @@ export function initAnimations() {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
                 observer.unobserve(entry.target);
+                
+                if (entry.target.classList.contains('hero-visual')) {
+                    // Delay slightly to let the reveal animation finish
+                    setTimeout(() => {
+                        autoTypeAndRunCode(entry.target);
+                    }, 800);
+                }
             }
         });
     }, observerOptions);

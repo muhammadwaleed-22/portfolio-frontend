@@ -236,6 +236,17 @@ export function initChatbot() {
                 }
 
                 const chunk = decoder.decode(value, { stream: true });
+                
+                // If it looks like a backend JSON error, intercept it immediately
+                if (fullAssistantResponse === '' && chunk.trim().startsWith('{"success": false')) {
+                    try {
+                        const errorObj = JSON.parse(chunk.trim());
+                        throw new Error(errorObj.error?.message || 'Network error communicating with AI.');
+                    } catch (e) {
+                        throw new Error(e.message || 'Network error communicating with AI.');
+                    }
+                }
+
                 fullAssistantResponse += chunk;
                 pendingBuffer += chunk;
                 
@@ -261,18 +272,6 @@ export function initChatbot() {
             if (!hasStartedStreaming) {
                 typingIndicator.remove();
                 messagesContainer.appendChild(div);
-            }
-
-            // Check if the response is actually a JSON error string
-            try {
-                if (fullAssistantResponse.trim().startsWith('{"success": false, "error":')) {
-                    const errorObj = JSON.parse(fullAssistantResponse);
-                    throw new Error(errorObj.error.message || 'Network error communicating with AI.');
-                }
-            } catch (e) {
-                if (e.message && e.message !== 'Unexpected end of JSON input') {
-                    throw e; // rethrow to be caught by outer catch block
-                }
             }
 
             // Remove streaming cursor once done
