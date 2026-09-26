@@ -34,6 +34,12 @@ export function initChatbot() {
         "What is his .NET experience?"
     ];
 
+    // Create backdrop for mobile
+    const backdrop = document.createElement('div');
+    backdrop.className = 'chat-backdrop';
+    document.body.appendChild(backdrop);
+    backdrop.addEventListener('click', toggleChat);
+
     function toggleChat() {
         isOpen = !isOpen;
         chatPanel.setAttribute('aria-hidden', !isOpen);
@@ -41,6 +47,13 @@ export function initChatbot() {
 
         if (isOpen) {
             chatPanel.classList.add('is-open');
+            triggerBtn.classList.add('chat-open');
+            backdrop.classList.add('is-open');
+            
+            if (window.innerWidth <= 768) {
+                document.body.classList.add('nav-open'); // Reuse nav-open class for scroll lock
+            }
+
             if (!hasStarted) {
                 renderWelcome();
                 renderSuggestions();
@@ -49,6 +62,9 @@ export function initChatbot() {
             chatInput.focus();
         } else {
             chatPanel.classList.remove('is-open');
+            triggerBtn.classList.remove('chat-open');
+            backdrop.classList.remove('is-open');
+            document.body.classList.remove('nav-open');
             triggerBtn.focus();
         }
     }
@@ -63,7 +79,7 @@ export function initChatbot() {
     });
 
     function renderWelcome() {
-        const welcomeText = "Hi! I'm Waleed's portfolio AI assistant.\n\nYou can ask me about his skills, projects, experience, or technical background.";
+        const welcomeText = "Hi! I'm Waleed's portfolio AI assistant.\n\nYou can ask me about skills, projects, experience, or technical background.";
         renderMessage(welcomeText, 'assistant');
     }
 
@@ -245,6 +261,18 @@ export function initChatbot() {
             if (!hasStartedStreaming) {
                 typingIndicator.remove();
                 messagesContainer.appendChild(div);
+            }
+
+            // Check if the response is actually a JSON error string
+            try {
+                if (fullAssistantResponse.trim().startsWith('{"success": false, "error":')) {
+                    const errorObj = JSON.parse(fullAssistantResponse);
+                    throw new Error(errorObj.error.message || 'Network error communicating with AI.');
+                }
+            } catch (e) {
+                if (e.message && e.message !== 'Unexpected end of JSON input') {
+                    throw e; // rethrow to be caught by outer catch block
+                }
             }
 
             // Remove streaming cursor once done

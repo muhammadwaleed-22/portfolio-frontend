@@ -16,28 +16,34 @@ export function initNavigation() {
     }, { passive: true });
 
     // Mobile Menu Toggle
-    const toggleMenu = () => {
-        const isOpen = navbarNav.classList.contains('is-open');
+    const closeMobileNav = () => {
+        navbarNav.classList.remove('is-open');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        mobileToggle.classList.remove('active');
+        document.body.classList.remove('nav-open');
         
-        if (isOpen) {
-            navbarNav.classList.remove('is-open');
-            mobileToggle.setAttribute('aria-expanded', 'false');
-            document.body.style.overflow = ''; // Restore scrolling
-            
-            // Swap icon to menu
-            mobileToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="menu-icon"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
-        } else {
-            navbarNav.classList.add('is-open');
-            mobileToggle.setAttribute('aria-expanded', 'true');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
-            
-            // Swap icon to close
-            mobileToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="close-icon"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
-        }
+        // Swap icon to menu
+        mobileToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="menu-icon"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+    };
+
+    const openMobileNav = () => {
+        navbarNav.classList.add('is-open');
+        mobileToggle.setAttribute('aria-expanded', 'true');
+        mobileToggle.classList.add('active');
+        document.body.classList.add('nav-open');
+        
+        // Swap icon to close
+        mobileToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="close-icon"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
     };
 
     if (mobileToggle) {
-        mobileToggle.addEventListener('click', toggleMenu);
+        mobileToggle.addEventListener('click', () => {
+            if (navbarNav.classList.contains('is-open')) {
+                closeMobileNav();
+            } else {
+                openMobileNav();
+            }
+        });
     }
 
     // Close menu when a navigation item is clicked
@@ -48,9 +54,7 @@ export function initNavigation() {
             // Add active class to clicked link
             e.currentTarget.classList.add('active');
             
-            if (navbarNav.classList.contains('is-open')) {
-                toggleMenu();
-            }
+            closeMobileNav();
         });
     });
 
@@ -91,15 +95,30 @@ export function initNavigation() {
     // Close menu on Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && navbarNav.classList.contains('is-open')) {
-            toggleMenu();
+            closeMobileNav();
             mobileToggle.focus(); // Return focus to button for accessibility
         }
     });
 
-    // Handle window resize properly (prevent broken states if resized while menu is open)
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768 && navbarNav.classList.contains('is-open')) {
-            toggleMenu();
+    // Handle mobile DOM positioning for fixed nav
+    // (Bypasses CSS containing block bug caused by backdrop-filter on the navbar)
+    const handleNavLocation = () => {
+        if (window.innerWidth <= 768) {
+            if (navbarNav.parentElement !== document.body) {
+                document.body.appendChild(navbarNav);
+            }
+        } else {
+            const container = navbar.querySelector('.container');
+            if (navbarNav.parentElement !== container) {
+                container.appendChild(navbarNav);
+            }
+            if (navbarNav.classList.contains('is-open')) {
+                closeMobileNav();
+            }
         }
-    });
+    };
+
+    // Run on load and resize
+    handleNavLocation();
+    window.addEventListener('resize', handleNavLocation);
 }
