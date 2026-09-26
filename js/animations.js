@@ -81,54 +81,113 @@ function triggerTerminalAnimation(container) {
     }, 500);
 }
 
-let codeEditorTyped = false;
-function initCodeEditorTyping(container) {
-    if (codeEditorTyped) return;
-    codeEditorTyped = true;
+let isProfileAnimationRunning = false;
 
-    const codeElement = container.querySelector('.code-editor-body code');
-    if (!codeElement) return;
-
-    const textNodes = [];
-    const walk = document.createTreeWalker(codeElement, NodeFilter.SHOW_TEXT, null, false);
-    let n;
-    while(n = walk.nextNode()) {
-        textNodes.push({
-            node: n,
-            text: n.nodeValue,
-            currentLength: 0
-        });
-        n.nodeValue = ''; 
-    }
-
-    let currentNodeIndex = 0;
-    codeElement.style.borderRight = '2px solid var(--accent-primary)';
-
-    function typeNextChar() {
-        if (currentNodeIndex >= textNodes.length) {
-            codeElement.style.borderRight = 'transparent';
-            triggerTerminalAnimation(container);
-            return; 
+async function typeText(element, text, speed = 40) {
+    return new Promise(resolve => {
+        let i = 0;
+        element.innerHTML = '';
+        function type() {
+            if (i < text.length) {
+                element.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, speed + (Math.random() * 20 - 10));
+            } else {
+                resolve();
+            }
         }
+        type();
+    });
+}
 
-        const currentNodeData = textNodes[currentNodeIndex];
+async function runProfileAnimation() {
+    if (isProfileAnimationRunning) return;
+    isProfileAnimationRunning = true;
+    
+    const runBtn = document.getElementById('run-code-btn');
+    const editorBody = document.getElementById('code-editor-body');
+    const fileName = document.querySelector('.hero-visual .file-name');
+    const virtualCursor = document.getElementById('virtual-cursor');
+    
+    if(!runBtn || !editorBody) return;
+    
+    if(virtualCursor) virtualCursor.style.display = 'none';
+
+    try {
+        runBtn.disabled = true;
+        runBtn.style.opacity = '0.5';
+        runBtn.style.cursor = 'not-allowed';
         
-        if (currentNodeData.currentLength < currentNodeData.text.length) {
-            currentNodeData.currentLength++;
-            currentNodeData.node.nodeValue = currentNodeData.text.substring(0, currentNodeData.currentLength);
+        if (fileName) fileName.innerText = 'terminal.sh';
+        
+        editorBody.innerHTML = '<div id="terminal-content" style="font-family: var(--font-code); color: var(--success); font-size: 0.9rem; line-height: 1.7; text-align: left; white-space: pre-wrap; word-break: break-word;"></div>';
+        const terminalContent = document.getElementById('terminal-content');
+        
+        const sequence = [
+            "> initializing profile...",
+            "> reading developer.config",
+            "> loading technologies...",
+            "> loading experience...",
+            "> connecting projects...",
+            "> compiling portfolio...",
+            "> build successful ✓"
+        ];
+        
+        for (const line of sequence) {
+            const lineDiv = document.createElement('div');
+            lineDiv.innerHTML = `<span class="line-text"></span><span class="cursor" style="animation: blink-cursor 1s step-end infinite;">_</span>`;
+            terminalContent.appendChild(lineDiv);
             
-            let delay = 15 + Math.random() * 20; 
-            const lastChar = currentNodeData.text[currentNodeData.currentLength - 1];
-            if (lastChar === '\n') delay += 100;
+            const textSpan = lineDiv.querySelector('.line-text');
+            await typeText(textSpan, line);
             
-            safeSetTimeout(typeNextChar, delay);
-        } else {
-            currentNodeIndex++;
-            typeNextChar();
+            const cursor = lineDiv.querySelector('.cursor');
+            if(cursor) cursor.remove();
+            
+            await new Promise(r => setTimeout(r, 350));
         }
+        
+        // Loader
+        editorBody.innerHTML = `
+            <div class="modern-loader-container" style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; color:var(--text-secondary); font-family:var(--font-code); font-size:0.9rem;">
+                <div class="modern-spinner" style="margin-bottom: 16px;"></div>
+                <div>Rendering profile...</div>
+            </div>
+        `;
+        
+        await new Promise(r => setTimeout(r, 1200));
+        
+        // Image Reveal
+        if(fileName) fileName.innerText = 'Profile Loaded';
+        editorBody.innerHTML = `
+            <div class="profile-image-wrapper" style="opacity: 0; transform: translateY(15px) scale(0.96); transition: opacity 800ms cubic-bezier(0.25, 1, 0.5, 1), transform 800ms cubic-bezier(0.25, 1, 0.5, 1); width: 100%; box-sizing: border-box; max-width: 380px; margin: 0 auto;">
+                <img src="assets/images/profile-light.jpg" alt="Profile Output Light" class="profile-output-image profile-img-light" onerror="this.src='https://via.placeholder.com/150';"/>
+                <img src="assets/images/profile-dark.jpg" alt="Profile Output Dark" class="profile-output-image profile-img-dark" onerror="this.src='https://via.placeholder.com/150';"/>
+            </div>
+        `;
+        
+        // Trigger reflow
+        editorBody.offsetHeight;
+        
+        const wrapper = editorBody.querySelector('.profile-image-wrapper');
+        if (wrapper) {
+            wrapper.style.opacity = '1';
+            wrapper.style.transform = 'translateY(0) scale(1)';
+        }
+        
+    } finally {
+        isProfileAnimationRunning = false;
+        runBtn.disabled = false;
+        runBtn.style.opacity = '1';
+        runBtn.style.cursor = 'pointer';
+        runBtn.innerHTML = `
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+            </svg>
+        `;
+        runBtn.setAttribute('aria-label', 'Replay animation');
     }
-
-    safeSetTimeout(typeNextChar, 500);
 }
 
 export function initAnimations() {
@@ -145,12 +204,6 @@ export function initAnimations() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
-                
-                if (entry.target.classList.contains('hero-visual')) {
-                    initCodeEditorTyping(entry.target);
-                }
-                
-                // Stop observing after animation runs once
                 observer.unobserve(entry.target);
             }
         });
@@ -165,26 +218,10 @@ export function initAnimations() {
     const runBtn = document.getElementById('run-code-btn');
     if(runBtn) {
         runBtn.addEventListener('click', () => {
-            const container = document.querySelector('.hero-visual');
-            const editorBody = document.getElementById('code-editor-body');
-            const fileName = container.querySelector('.file-name');
-            const cursor = document.getElementById('virtual-cursor');
-
-            clearAllAnimations();
-            codeEditorTyped = false;
-
-            if(fileName) fileName.innerText = 'profile.js';
-            if(editorBody) editorBody.innerHTML = originalCodeHTML;
-            if(cursor) {
-                cursor.style.transition = 'none'; // Prevent animation while resetting
-                cursor.style.opacity = '0';
-                cursor.style.top = '50%';
-                cursor.style.left = '50%';
-                // Restore transition after reset
-                setTimeout(() => { cursor.style.transition = 'top 1.5s cubic-bezier(0.25, 1, 0.5, 1), left 1.5s cubic-bezier(0.25, 1, 0.5, 1)'; }, 50);
-            }
-
-            initCodeEditorTyping(container);
+            runProfileAnimation();
         });
     }
+    
+    // Auto-run once if desired? The user requested to only run on Play.
+    // So we don't automatically call runProfileAnimation().
 }

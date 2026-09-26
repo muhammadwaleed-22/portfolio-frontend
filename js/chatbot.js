@@ -144,13 +144,10 @@ export function initChatbot() {
                 throw new Error(errorData.error?.message || 'The AI assistant is temporarily unavailable. Please try again.');
             }
 
-            // Remove thinking indicator
-            typingIndicator.remove();
-
-            // Create empty assistant bubble for streaming
+            // Do not remove typing indicator or append empty bubble yet.
+            // We will do this when the first text chunk actually arrives.
             const div = document.createElement('div');
             div.className = 'chat-message chat-message--assistant';
-            messagesContainer.appendChild(div);
 
             const reader = response.body.getReader();
             const decoder = new TextDecoder("utf-8");
@@ -160,6 +157,7 @@ export function initChatbot() {
             let renderedText = '';
             let isStreamComplete = false;
             let queueAborted = false;
+            let hasStartedStreaming = false;
             
             // Process queue asynchronously to simulate typing
             const processQueue = async () => {
@@ -170,6 +168,12 @@ export function initChatbot() {
                         // Wait briefly for new words if stream isn't done
                         await new Promise(r => setTimeout(r, 20));
                         continue;
+                    }
+
+                    if (!hasStartedStreaming) {
+                        hasStartedStreaming = true;
+                        typingIndicator.remove();
+                        messagesContainer.appendChild(div);
                     }
                     
                     if (isReducedMotion) {
@@ -237,6 +241,11 @@ export function initChatbot() {
             
             // Wait for visual typing to finish
             await queuePromise;
+
+            if (!hasStartedStreaming) {
+                typingIndicator.remove();
+                messagesContainer.appendChild(div);
+            }
 
             // Remove streaming cursor once done
             div.innerHTML = parseMarkdown(fullAssistantResponse);

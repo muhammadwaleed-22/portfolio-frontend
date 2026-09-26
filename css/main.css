@@ -138,9 +138,13 @@ video {
   height: auto;
 }
 
-body {
+html, body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+}
+
+body {
   font-family: var(--font-primary);
   background-color: var(--bg-primary);
   color: var(--text-primary);
@@ -148,6 +152,7 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-wrap: break-word;
   word-wrap: break-word;
+  overflow-x: hidden;
   position: relative;
 }
 
@@ -757,6 +762,8 @@ a {
   font-size: 0.9rem;
   line-height: 1.7;
   text-align: left;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 [data-theme="light"] .code-editor-body pre {
@@ -823,6 +830,7 @@ a {
 
 .about-main .body-text {
   margin-bottom: var(--space-4);
+  text-align: justify;
 }
 
 .about-stats {

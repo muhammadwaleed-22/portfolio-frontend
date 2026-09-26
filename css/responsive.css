@@ -142,6 +142,7 @@
 
   .hero-actions .btn {
     width: 100%;
+    max-width: 100%;
   }
   
   .hero-tech-tags {
@@ -160,6 +161,14 @@
   .about-grid {
     grid-template-columns: 1fr;
     gap: var(--space-8);
+  }
+  
+  .about-main .body-text {
+    text-align: left;
+    line-height: 1.7;
+    width: 100%;
+    max-width: 100%;
+    overflow-wrap: break-word;
   }
 }
 
